@@ -12,6 +12,9 @@ def update_frame(ind=0):
     next_ind = (ind + 1) % len(frames)
     window.after(50, update_frame, next_ind) 
 
+def closing():
+    window.destroy()
+
 def error_check(key):
     global text
     if len(key) != 3:
@@ -144,6 +147,9 @@ for j in range(cols):
 btn = Button(grid_frame, text='Сгенерировать ключ', bg='white', fg='black')
 btn.grid(row=1, column=12, padx=5, pady=10, columnspan=4)
 
+btn_ex = Button(grid_frame, text='Выход', bg='white', fg='black')
+btn_ex.place(x=650, y=130, width=100, height=50)
+
 entry = Entry(grid_frame, textvariable='', bg='white', fg='Black')
 entry.grid(row=1, column=7, padx=3, pady=10, columnspan=5)
 
@@ -154,6 +160,7 @@ ready_text = Label(grid_frame, text=' '*53, bg='white', fg='black')
 ready_text.grid(row=2, column=2, ipadx=4, ipady=3, pady=10, padx=7, columnspan=5)
 
 btn.config(command=write_key)
+btn_ex.config(command=closing)
 
 text = Label(grid_frame, text='Введите 3 цифры --> \n после чего нажмите кнопку \n "Сгенерировать ключ"', bg='white', fg='black')
 text.grid(row=1, column=2, ipadx=4, ipady=3, pady=10, padx=7, columnspan=5)
